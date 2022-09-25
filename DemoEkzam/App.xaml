@@ -7,7 +7,6 @@
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
         </Style>
-        
         <Style TargetType="TextBlock" x:Key="txtHeader">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>

@@ -11,12 +11,12 @@
             <RowDefinition Height="33*"/>
             <RowDefinition Height="184*"/>
         </Grid.RowDefinitions>
-        <StackPanel  Grid.Row="0" Style="{StaticResource spHeader}">
-            <Image Margin="0,0,10,0" Source="/Images/school_logo.png" Width="50"/>
+        <StackPanel Grid.Row="0" Style="{StaticResource spHeader}">
+            <Image Margin="0,0,15,0" Source="/Images/school_logo.png" Width="50"/>
             <TextBlock Name="Header" Text="Школа языков Леарн" Style="{StaticResource txtHeader}"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <Frame Name="frmMain"/>
+            <Frame Name="frmMain" NavigationUIVisibility="Hidden"/>
         </StackPanel>
     </Grid>
 </Window>
