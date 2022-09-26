@@ -29,5 +29,22 @@ namespace DemoEkzam
             FrameLoad.frmLoad = frmMain;
             FrameLoad.frmLoad.Navigate(new Vyvod());
         }
+
+        private void txtAdmin_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if(txtAdmin.Text == "0000")
+            {
+                Globals.AdminButton = "Visible";
+                FrameLoad.frmLoad.Navigate( new Vyvod());
+                MessageBox.Show("Ничего не работает");
+            }
+            else
+            {
+                Globals.AdminButton = "Hidden";
+                FrameLoad.frmLoad.Navigate(new Vyvod());
+            }
+        }
+
+        
     }
 }

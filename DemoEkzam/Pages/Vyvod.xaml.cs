@@ -24,7 +24,7 @@ namespace DemoEkzam.Pages
         public Vyvod()
         {
             InitializeComponent();
-            dgView.ItemsSource = DataBase.connection.Service.ToList();
+            lstView.ItemsSource = DataBase.connection.Service.ToList();
         }
     }
 }

@@ -7,7 +7,26 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Vyvod">
+    <Page.Resources>
+        <DataTemplate x:Key="Template">
+            <GroupBox>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Image Width="100" Height="100" Source="{Binding MainImagePath}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Name="txtHedaer" Text="{Binding Title}"/>
+                        <TextBlock Name="txtPrice" Text="{Binding myString}"/>
+                        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
+                            <Button Margin="0,0,5,0" Name="btnUpdate" Visibility="{Binding AdminButtons}" Width="100" Content="редактировать"/>
+                            <Button Name="btnDelete" Width="100" Visibility="{Binding AdminButtons}" Content="удалить"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
-        <DataGrid Name="dgView" Height="300" Width="700"/>
+        <ListView Height="300" Name="lstView" ItemTemplate="{StaticResource Template}"/>
     </Grid>
 </Page>
