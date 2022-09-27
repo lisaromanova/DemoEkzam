@@ -9,15 +9,19 @@
       Title="Vyvod">
     <Page.Resources>
         <DataTemplate x:Key="Template">
-            <GroupBox>
-                <StackPanel Orientation="Horizontal">
+            <GroupBox Background="{Binding ColorBack}" Width="700">
+                <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                     <StackPanel>
-                        <Image Width="100" Height="100" Source="{Binding MainImagePath}"/>
+                        <Image Width="150" Height="150" Source="{Binding MainImagePath}"/>
                     </StackPanel>
-                    <StackPanel>
-                        <TextBlock Name="txtHedaer" Text="{Binding Title}"/>
-                        <TextBlock Name="txtPrice" Text="{Binding myString}"/>
-                        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
+                    <StackPanel Margin="10,0,0,0">
+                        <TextBlock Name="txtHeader" Text="{Binding Title}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0" TextDecorations="Strikethrough" Name="txtPrice" Visibility="{Binding PriceVisibility}" Text="{Binding PriceDisc}"/>
+                            <TextBlock Name="txtPriceDisc" Text="{Binding myString}"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding Sk}" Visibility="{Binding PriceVisibility}"/>
+                        <StackPanel Margin="0,30,0,0" Orientation="Horizontal">
                             <Button Margin="0,0,5,0" Name="btnUpdate" Visibility="{Binding AdminButtons}" Width="100" Content="редактировать"/>
                             <Button Name="btnDelete" Width="100" Visibility="{Binding AdminButtons}" Content="удалить"/>
                         </StackPanel>
@@ -27,6 +31,12 @@
         </DataTemplate>
     </Page.Resources>
     <Grid>
-        <ListView Height="300" Name="lstView" ItemTemplate="{StaticResource Template}"/>
+        <StackPanel>
+            <ComboBox Name="cbSort" HorizontalAlignment="Left" Width="200" SelectionChanged="cbSort_SelectionChanged" IsEditable="True" IsReadOnly="True">
+                    <ComboBoxItem>По возрастанию</ComboBoxItem>
+                    <ComboBoxItem>По убыванию</ComboBoxItem>
+                </ComboBox>
+                <ListView Height="400"  Name="lstView" ItemTemplate="{StaticResource Template}"/>
+        </StackPanel>
     </Grid>
 </Page>

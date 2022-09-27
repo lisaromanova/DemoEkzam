@@ -35,7 +35,7 @@ namespace DemoEkzam
             if(txtAdmin.Text == "0000")
             {
                 Globals.AdminButton = "Visible";
-                FrameLoad.frmLoad.Navigate( new Vyvod());
+                FrameLoad.frmLoad.Navigate(new Vyvod());
                 MessageBox.Show("Ничего не работает");
             }
             else

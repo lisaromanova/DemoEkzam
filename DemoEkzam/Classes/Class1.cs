@@ -13,14 +13,22 @@ namespace DemoEkzam
         {
             get
             {
-                decimal c = Math.Round(Cost, 0);
-                string str = c.ToString();
+                string str = Costnew.ToString();
                 str += " рублей за ";
                 int min = DurationInSeconds / 60;
                 str += min.ToString();
                 str += " минут";
                 return str;
-
+            }
+        }
+        public decimal Costnew
+        {
+            get
+            {
+                decimal c = Math.Round(Cost, 0);
+                c *= Convert.ToDecimal(1 - Discount);
+                c = Math.Round(c, 0);
+                return c;
             }
         }
         public string AdminButtons
@@ -31,6 +39,47 @@ namespace DemoEkzam
             }
             
         }
-
+        public string PriceVisibility
+        {
+            get
+            {
+                if (Discount == 0)
+                {
+                    return "Collapsed";
+                }
+                else
+                {
+                    return "Visible";
+                }
+            }
+        }
+        public string PriceDisc
+        {
+            get
+            {
+                return Math.Round(Cost, 0).ToString();
+            }
+        }
+        public string Sk
+        {
+            get
+            {
+                return "* скидка " + (Discount * 100).ToString() + "%";
+            }
+        }
+        public string ColorBack
+        {
+            get
+            {
+                if(Discount == 0)
+                {
+                    return "White";
+                }
+                else
+                {
+                    return "#FFE7FABF";
+                }
+            }
+        }
     }
 }

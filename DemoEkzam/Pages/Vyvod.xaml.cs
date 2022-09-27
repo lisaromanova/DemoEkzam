@@ -24,7 +24,33 @@ namespace DemoEkzam.Pages
         public Vyvod()
         {
             InitializeComponent();
-            lstView.ItemsSource = DataBase.connection.Service.ToList();
+            //lstView.ItemsSource = DataBase.connection.Service.ToList();
+            //List<Service> list1 = DataBase.connection.Service.ToList(); ;
+            //List<Service> list2 = new List<Service>();
+            //foreach(Service service in list1)
+            //{
+            //    //Service service2 = new Service();
+            //    //service2.Title = service.Title;
+            //    //service2.
+            //}
+            cbSort.SelectedIndex = 0;
+        }
+
+        private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (cbSort.SelectedIndex)
+            {
+                case 0:
+                    List<Service> listSort = DataBase.connection.Service.ToList();
+                    listSort = listSort.OrderBy(s => s.Costnew).ToList();
+                    lstView.ItemsSource = listSort;
+                    break;
+                case 1:
+                    List<Service> listSortDesc = DataBase.connection.Service.OrderByDescending(s => s.Cost).ToList();
+                    listSortDesc = listSortDesc.OrderByDescending(s => s.Costnew).ToList();
+                    lstView.ItemsSource = listSortDesc;
+                    break;
+            }
         }
     }
 }
