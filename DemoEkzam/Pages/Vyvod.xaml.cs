@@ -24,15 +24,6 @@ namespace DemoEkzam.Pages
         public Vyvod()
         {
             InitializeComponent();
-            //lstView.ItemsSource = DataBase.connection.Service.ToList();
-            //List<Service> list1 = DataBase.connection.Service.ToList(); ;
-            //List<Service> list2 = new List<Service>();
-            //foreach(Service service in list1)
-            //{
-            //    //Service service2 = new Service();
-            //    //service2.Title = service.Title;
-            //    //service2.
-            //}
             cbSort.SelectedIndex = 0;
         }
 
