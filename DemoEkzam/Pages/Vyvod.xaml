@@ -8,8 +8,8 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Vyvod">
     <Page.Resources>
-        <DataTemplate x:Key="Template">
-            <GroupBox Background="{Binding ColorBack}" Width="700">
+        <DataTemplate x:Key="Template" >
+            <UniformGrid Background="{Binding ColorBack}">
                 <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                     <StackPanel>
                         <Image Width="150" Height="150" Source="{Binding MainImagePath}"/>
@@ -23,17 +23,18 @@
                         <TextBlock Text="{Binding Sk}" Visibility="{Binding PriceVisibility}"/>
                         <StackPanel Margin="0,30,0,0" Orientation="Horizontal">
                             <Button Margin="0,0,5,0" Name="btnUpdate" Visibility="{Binding AdminButtons}" Width="100" Content="редактировать"/>
-                            <Button Name="btnDelete" Width="100" Visibility="{Binding AdminButtons}" Content="удалить"/>
+                            <Button Name="btnDelete" Width="100" Visibility="{Binding AdminButtons}" Content="удалить" Click="btnDelete_Click"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
-            </GroupBox>
+            </UniformGrid>
         </DataTemplate>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="23*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="31"/>
+            <RowDefinition/>
+            <RowDefinition Height="31"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <StackPanel Orientation="Horizontal">
@@ -51,10 +52,10 @@
                 </ComboBox>
                 <TextBox Margin="10,0,0,0" Name="txtNameService" Width="200"/>
             </StackPanel>
-            <ListView Height="350"  Name="lstView" ItemTemplate="{StaticResource Template}"/>
         </StackPanel>
-        <StackPanel Grid.Row="1">
-            <TextBlock Name="txtCountService" HorizontalAlignment="Center"/>
+        <ListBox Grid.Row="1" Name="lstView" ItemTemplate="{StaticResource Template}" HorizontalContentAlignment="Stretch"/>
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Name="tbCountService" />
         </StackPanel>
     </Grid>
 </Page>

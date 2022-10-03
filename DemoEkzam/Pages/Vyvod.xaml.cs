@@ -29,6 +29,8 @@ namespace DemoEkzam.Pages
         }
         static List<Service> list = DataBase.connection.Service.ToList();
         List<Service> list1 = list;
+        int index = 0;
+        int indexAll = list.Count;
 
         private void cbFiltr_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -63,6 +65,13 @@ namespace DemoEkzam.Pages
                     break;
             }
             lstView.ItemsSource = list1;
+            index = list1.Count;
+            tbCountService.Text = index.ToString() + " из " + indexAll.ToString();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

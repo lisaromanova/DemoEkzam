@@ -18,8 +18,6 @@
         <StackPanel HorizontalAlignment="Right" Grid.Row="0">
             <TextBox Width="100" Name="txtAdmin" SelectionChanged="txtAdmin_SelectionChanged"/>
         </StackPanel>
-        <StackPanel Grid.Row="1">
-            <Frame Name="frmMain" NavigationUIVisibility="Hidden"/>
-        </StackPanel>
+        <Frame Grid.Row="1" Name="frmMain" NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

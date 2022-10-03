@@ -28,6 +28,8 @@ namespace DemoEkzam
             DataBase.connection = new DBEntities();
             FrameLoad.frmLoad = frmMain;
             FrameLoad.frmLoad.Navigate(new Vyvod());
+            Globals.Height = frmMain.ActualHeight;
+            Globals.Width = frmMain.ActualWidth;
         }
 
         private void txtAdmin_SelectionChanged(object sender, RoutedEventArgs e)
