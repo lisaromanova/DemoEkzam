@@ -9,7 +9,7 @@
       Title="Vyvod">
     <Page.Resources>
         <DataTemplate x:Key="Template" >
-            <UniformGrid Background="{Binding ColorBack}">
+            <GroupBox Background="{Binding ColorBack}">
                 <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                     <StackPanel>
                         <Image Width="150" Height="150" Source="{Binding MainImagePath}"/>
@@ -27,7 +27,7 @@
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
-            </UniformGrid>
+            </GroupBox>
         </DataTemplate>
     </Page.Resources>
     <Grid>
