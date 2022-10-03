@@ -30,21 +30,6 @@ namespace DemoEkzam.Pages
         static List<Service> list = DataBase.connection.Service.ToList();
         List<Service> list1 = list;
 
-        private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            switch (cbSort.SelectedIndex)
-            {
-                case 0: 
-                    list1 = list1.OrderBy(s => s.Costnew).ToList();
-                    lstView.ItemsSource = list1;
-                    break;
-                case 1:
-                    list1 = list1.OrderByDescending(s => s.Costnew).ToList();
-                    lstView.ItemsSource = list1;
-                    break;
-            }
-        }
-
         private void cbFiltr_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch (cbFiltr.SelectedIndex)

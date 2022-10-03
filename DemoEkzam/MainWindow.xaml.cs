@@ -32,7 +32,7 @@ namespace DemoEkzam
 
         private void txtAdmin_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if(txtAdmin.Text == "0000")
+            if (txtAdmin.Text == "0000")
             {
                 Globals.AdminButton = "Visible";
                 FrameLoad.frmLoad.Navigate(new Vyvod());
@@ -45,6 +45,10 @@ namespace DemoEkzam
             }
         }
 
-        
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Globals.Height = frmMain.ActualHeight;
+            Globals.Width = frmMain.ActualWidth;
+        }
     }
 }

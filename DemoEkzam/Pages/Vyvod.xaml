@@ -31,7 +31,11 @@
         </DataTemplate>
     </Page.Resources>
     <Grid>
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
             <StackPanel Orientation="Horizontal">
                 <ComboBox Name="cbSort" HorizontalAlignment="Left" Width="200" SelectionChanged="cbFiltr_SelectionChanged" IsEditable="True" IsReadOnly="True">
                     <ComboBoxItem>По возрастанию</ComboBoxItem>
@@ -45,8 +49,12 @@
                     <ComboBoxItem>от 30% до 70%</ComboBoxItem>
                     <ComboBoxItem>от 70% до 100%</ComboBoxItem>
                 </ComboBox>
+                <TextBox Margin="10,0,0,0" Name="txtNameService" Width="200"/>
             </StackPanel>
-            <ListView Height="400"  Name="lstView" ItemTemplate="{StaticResource Template}"/>
+            <ListView Height="350"  Name="lstView" ItemTemplate="{StaticResource Template}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <TextBlock Name="txtCountService" HorizontalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Page>
