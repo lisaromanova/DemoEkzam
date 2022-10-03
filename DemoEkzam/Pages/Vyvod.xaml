@@ -32,11 +32,21 @@
     </Page.Resources>
     <Grid>
         <StackPanel>
-            <ComboBox Name="cbSort" HorizontalAlignment="Left" Width="200" SelectionChanged="cbSort_SelectionChanged" IsEditable="True" IsReadOnly="True">
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Name="cbSort" HorizontalAlignment="Left" Width="200" SelectionChanged="cbFiltr_SelectionChanged" IsEditable="True" IsReadOnly="True">
                     <ComboBoxItem>По возрастанию</ComboBoxItem>
                     <ComboBoxItem>По убыванию</ComboBoxItem>
                 </ComboBox>
-                <ListView Height="400"  Name="lstView" ItemTemplate="{StaticResource Template}"/>
+                <ComboBox Margin="10,0,0,0" Name="cbFiltr" Width="200" IsEditable="True" IsReadOnly="True" SelectionChanged="cbFiltr_SelectionChanged">
+                    <ComboBoxItem>Все</ComboBoxItem>
+                    <ComboBoxItem>от 0 до 5%</ComboBoxItem>
+                    <ComboBoxItem>от 5% до 15%</ComboBoxItem>
+                    <ComboBoxItem>от 15% до 30%</ComboBoxItem>
+                    <ComboBoxItem>от 30% до 70%</ComboBoxItem>
+                    <ComboBoxItem>от 70% до 100%</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <ListView Height="400"  Name="lstView" ItemTemplate="{StaticResource Template}"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -25,23 +25,59 @@ namespace DemoEkzam.Pages
         {
             InitializeComponent();
             cbSort.SelectedIndex = 0;
+            cbFiltr.SelectedIndex = 0;
         }
+        static List<Service> list = DataBase.connection.Service.ToList();
+        List<Service> list1 = list;
 
         private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch (cbSort.SelectedIndex)
             {
-                case 0:
-                    List<Service> listSort = DataBase.connection.Service.ToList();
-                    listSort = listSort.OrderBy(s => s.Costnew).ToList();
-                    lstView.ItemsSource = listSort;
+                case 0: 
+                    list1 = list1.OrderBy(s => s.Costnew).ToList();
+                    lstView.ItemsSource = list1;
                     break;
                 case 1:
-                    List<Service> listSortDesc = DataBase.connection.Service.OrderByDescending(s => s.Cost).ToList();
-                    listSortDesc = listSortDesc.OrderByDescending(s => s.Costnew).ToList();
-                    lstView.ItemsSource = listSortDesc;
+                    list1 = list1.OrderByDescending(s => s.Costnew).ToList();
+                    lstView.ItemsSource = list1;
                     break;
             }
+        }
+
+        private void cbFiltr_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (cbFiltr.SelectedIndex)
+            {
+                case 0:
+                    list1 = list;  
+                    break;
+                case 1:
+                    list1 = list.Where(s=> s.Discount>=0 && s.Discount<0.05).ToList();
+                    break;
+                case 2:
+                    list1 = list.Where(s => s.Discount >= 0.05 && s.Discount < 0.15).ToList();
+                    break;
+                case 3:
+                    list1 = list.Where(s => s.Discount >= 0.15 && s.Discount < 0.30).ToList();
+                    break;
+                case 4:
+                    list1 = list.Where(s => s.Discount >= 0.30 && s.Discount < 0.70).ToList();
+                    break;
+                case 5:
+                    list1 = list.Where(s => s.Discount >= 0.70 && s.Discount < 1).ToList();
+                    break;
+            }
+            switch (cbSort.SelectedIndex)
+            {
+                case 0:
+                    list1 = list1.OrderBy(s => s.Costnew).ToList();
+                    break;
+                case 1:
+                    list1 = list1.OrderByDescending(s => s.Costnew).ToList();
+                    break;
+            }
+            lstView.ItemsSource = list1;
         }
     }
 }

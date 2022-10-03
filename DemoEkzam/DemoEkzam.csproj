@@ -171,9 +171,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Услуги школы\English.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Услуги школы\Английский язык.jpg" />
     <Resource Include="Услуги школы\for company.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
