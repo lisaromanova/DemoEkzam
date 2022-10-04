@@ -9,7 +9,5 @@ namespace DemoEkzam.Classes
     internal class Globals
     {
         public static string AdminButton="Hidden";
-        public static double Height;
-        public static double Width;
     }
 }

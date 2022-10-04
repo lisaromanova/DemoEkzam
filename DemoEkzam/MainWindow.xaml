@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoEkzam"
         mc:Ignorable="d"
-        Title="Школа языков Леарн" Height="550" MinHeight="550" Width="800" MinWidth="800" Icon="/Images/school_logo.ico" SizeChanged="Window_SizeChanged">
+        Title="Школа языков Леарн" Height="550" MinHeight="550" Width="800" MinWidth="800" Icon="/Images/school_logo.ico">
       <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="33*"/>

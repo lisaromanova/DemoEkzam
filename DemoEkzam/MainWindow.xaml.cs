@@ -28,8 +28,6 @@ namespace DemoEkzam
             DataBase.connection = new DBEntities();
             FrameLoad.frmLoad = frmMain;
             FrameLoad.frmLoad.Navigate(new Vyvod());
-            Globals.Height = frmMain.ActualHeight;
-            Globals.Width = frmMain.ActualWidth;
         }
 
         private void txtAdmin_SelectionChanged(object sender, RoutedEventArgs e)
@@ -45,12 +43,6 @@ namespace DemoEkzam
                 Globals.AdminButton = "Hidden";
                 FrameLoad.frmLoad.Navigate(new Vyvod());
             }
-        }
-
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Globals.Height = frmMain.ActualHeight;
-            Globals.Width = frmMain.ActualWidth;
         }
     }
 }
