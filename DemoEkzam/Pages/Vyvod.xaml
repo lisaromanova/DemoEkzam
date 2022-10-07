@@ -9,30 +9,32 @@
       Title="Vyvod">
     <Page.Resources>
         <DataTemplate x:Key="Template" >
-            <GroupBox Background="{Binding ColorBack}">
-                <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
-                    <StackPanel>
-                        <Image Width="150" Height="150" Source="{Binding MainImagePath}"/>
-                    </StackPanel>
-                    <StackPanel Margin="10,0,0,0">
-                        <TextBlock Name="txtHeader" Text="{Binding Title}"/>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,0,5,0" TextDecorations="Strikethrough" Name="txtPrice" Visibility="{Binding PriceVisibility}" Text="{Binding PriceDisc}"/>
-                            <TextBlock Name="txtPriceDisc" Text="{Binding myString}"/>
+            <StackPanel Background="{Binding ColorBack}">
+                <Border BorderThickness="1" BorderBrush="Black">
+                    <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                        <StackPanel>
+                            <Image Width="150" Height="150" Source="{Binding MainImagePath}"/>
                         </StackPanel>
-                        <TextBlock Text="{Binding Sk}" Visibility="{Binding PriceVisibility}"/>
-                        <StackPanel Margin="0,30,0,0" Orientation="Horizontal">
-                            <Button Margin="0,0,5,0" Name="btnUpdate" Visibility="{Binding AdminButtons}" Width="100" Content="редактировать"/>
-                            <Button Name="btnDelete" Width="100" Visibility="{Binding AdminButtons}" Content="удалить" Click="btnDelete_Click"/>
+                        <StackPanel Margin="10,0,0,0">
+                            <TextBlock Name="txtHeader" Text="{Binding Title}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="0,0,5,0" TextDecorations="Strikethrough" Name="txtPrice" Visibility="{Binding PriceVisibility}" Text="{Binding PriceDisc}"/>
+                                <TextBlock Name="txtPriceDisc" Text="{Binding myString}"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding Sk}" Visibility="{Binding PriceVisibility}"/>
+                            <StackPanel Margin="0,30,0,0" Orientation="Horizontal">
+                                <Button Margin="0,0,5,0" Name="btnUpdate" Visibility="{Binding AdminButtons}" Width="100" Content="редактировать"/>
+                                <Button Name="btnDelete" Width="100" Visibility="{Binding AdminButtons}" Content="удалить" Click="btnDelete_Click"/>
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </GroupBox>
+                </Border>
+            </StackPanel>
         </DataTemplate>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="31"/>
+            <RowDefinition Height="39"/>
             <RowDefinition/>
             <RowDefinition Height="31"/>
         </Grid.RowDefinitions>
@@ -53,7 +55,7 @@
                 <TextBox Margin="10,0,0,0" Name="txtNameService" Width="200"/>
             </StackPanel>
         </StackPanel>
-        <ListBox Grid.Row="1" Name="lstView" ItemTemplate="{StaticResource Template}" HorizontalContentAlignment="Stretch"/>
+        <ListView Grid.Row="1" Name="lstView" ItemTemplate="{StaticResource Template}" HorizontalContentAlignment="Stretch"/>
         <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Name="tbCountService" />
         </StackPanel>
