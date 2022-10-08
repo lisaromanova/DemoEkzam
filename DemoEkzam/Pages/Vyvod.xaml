@@ -10,7 +10,7 @@
     <Page.Resources>
         <DataTemplate x:Key="Template" >
             <StackPanel Background="{Binding ColorBack}">
-                <Border BorderThickness="1" BorderBrush="Black">
+                <Border BorderThickness="1" CornerRadius="10" BorderBrush="Black">
                     <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                         <StackPanel>
                             <Image Width="150" Height="150" Source="{Binding MainImagePath}"/>
@@ -23,8 +23,8 @@
                             </StackPanel>
                             <TextBlock Text="{Binding Sk}" Visibility="{Binding PriceVisibility}"/>
                             <StackPanel Margin="0,30,0,0" Orientation="Horizontal">
-                                <Button Margin="0,0,5,0" Name="btnUpdate" Visibility="{Binding AdminButtons}" Width="100" Content="редактировать"/>
-                                <Button Name="btnDelete" Width="100" Visibility="{Binding AdminButtons}" Content="удалить" Click="btnDelete_Click"/>
+                                <Button Margin="0,0,5,0" Name="btnUpdate" Visibility="{Binding AdminButtons}" Width="100" Content="редактировать" Click="btnUpdate_Click"/>
+                                <Button Name="btnDelete" Width="100" Visibility="{Binding AdminButtons}" Content="удалить" Click="btnDelete_Click" Tag="{Binding ID}"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -52,7 +52,7 @@
                     <ComboBoxItem>от 30% до 70%</ComboBoxItem>
                     <ComboBoxItem>от 70% до 100%</ComboBoxItem>
                 </ComboBox>
-                <TextBox Margin="10,0,0,0" Name="txtNameService" Width="200"/>
+                <TextBox Margin="10,0,0,0" Name="txtNameService" Width="200" TextChanged="txtNameService_TextChanged"/>
             </StackPanel>
         </StackPanel>
         <ListView Grid.Row="1" Name="lstView" ItemTemplate="{StaticResource Template}" HorizontalContentAlignment="Stretch"/>

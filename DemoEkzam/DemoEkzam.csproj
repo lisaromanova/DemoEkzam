@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddOrUpdateWindow.xaml.cs">
+      <DependentUpon>AddOrUpdateWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Class1.cs" />
     <Compile Include="Classes\DataBase.cs" />
     <Compile Include="Classes\FrameLoad.cs" />
@@ -109,6 +112,10 @@
     <Compile Include="Tag.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="AddOrUpdateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

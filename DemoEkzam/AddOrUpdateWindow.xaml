@@ -1,0 +1,35 @@
+﻿<Window x:Class="DemoEkzam.AddOrUpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoEkzam"
+        mc:Ignorable="d"
+        Title="AddOrUpdateWindow" Name="nameWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock TextAlignment="Center" Name="tbHeader" Text="Добавление услуги"/>
+            <GroupBox Name="gbId" Header="ID">
+                <TextBox Name="txtId" IsReadOnly="True"/>
+            </GroupBox>
+            <GroupBox Header="Наименование услуги">
+                <TextBox Name="txtName"/>
+            </GroupBox>
+            <GroupBox Header="Стоимость услуги">
+                <TextBox Name="txtCost"/>
+            </GroupBox>
+            <GroupBox Header="Длительность услуги">
+                <TextBox Name="txtDuration"/>
+            </GroupBox>
+            <GroupBox Header="Описание услуги">
+                <TextBox Name="txtDescription"/>
+            </GroupBox>
+            <GroupBox Header="Скидка">
+                <TextBox Name="txtDiscount"/>
+            </GroupBox>
+            <GroupBox Header="Изображение">
+                
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>
