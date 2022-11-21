@@ -23,7 +23,7 @@
                             </StackPanel>
                             <TextBlock Text="{Binding Sk}" Visibility="{Binding PriceVisibility}"/>
                             <StackPanel Margin="0,30,0,0" Orientation="Horizontal">
-                                <Button Margin="0,0,5,0" Name="btnUpdate" Visibility="{Binding AdminButtons}" Width="100" Content="редактировать" Click="btnUpdate_Click"/>
+                                <Button Margin="0,0,5,0" Name="btnUpdate" Visibility="{Binding AdminButtons}" Width="100" Content="редактировать" Click="btnUpdate_Click" Tag="{Binding ID}"/>
                                 <Button Name="btnDelete" Width="100" Visibility="{Binding AdminButtons}" Content="удалить" Click="btnDelete_Click" Tag="{Binding ID}"/>
                             </StackPanel>
                         </StackPanel>
