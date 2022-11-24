@@ -32,11 +32,11 @@
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
-    <Grid>
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="39"/>
             <RowDefinition/>
-            <RowDefinition Height="31"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <StackPanel Orientation="Horizontal">
@@ -59,5 +59,6 @@
         <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Name="tbCountService" />
         </StackPanel>
+        <Button Name="btnAddService" Content="Добавить услугу" Width="150" Grid.Row="2" Height="30" HorizontalAlignment="Right" Click="btnAddService_Click"/>
     </Grid>
 </Page>

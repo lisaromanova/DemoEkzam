@@ -115,5 +115,12 @@ namespace DemoEkzam.Pages
             window.ShowDialog();
             FrameLoad.frmLoad.Navigate(new Vyvod());
         }
+
+        private void btnAddService_Click(object sender, RoutedEventArgs e)
+        {
+            AddOrUpdateWindow window = new AddOrUpdateWindow();
+            window.ShowDialog();
+            FrameLoad.frmLoad.Navigate(new Vyvod());
+        }
     }
 }

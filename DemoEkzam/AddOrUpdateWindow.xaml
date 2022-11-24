@@ -26,7 +26,7 @@
                     <GroupBox Header="Стоимость услуги">
                         <TextBox Name="txtCost"/>
                     </GroupBox>
-                    <GroupBox Header="Длительность услуги">
+                    <GroupBox Header="Длительность услуги в минутах">
                         <TextBox Name="txtDuration"/>
                     </GroupBox>
                     <GroupBox Header="Описание услуги">
