@@ -13,7 +13,7 @@
                 <GroupBox Header="Изображение">
                     <StackPanel>
                     <Image Width="250" Height="250" Name="imageService"/>
-                        <Button Name="btnPhoto" Width="200" Height="30" Margin="0,10,0,0" Content="Изменить фото"/>
+                        <Button Name="btnPhoto" Width="200" Height="30" Margin="0,10,0,0" Content="Изменить фото" Click="btnPhoto_Click"/>
                     </StackPanel>
                 </GroupBox>
                 <StackPanel Width="300">
@@ -32,7 +32,7 @@
                     <GroupBox Header="Описание услуги">
                         <TextBox Name="txtDescription" TextWrapping="Wrap" AcceptsReturn="True" Height="50"/>
                     </GroupBox>
-                    <GroupBox Header="Скидка">
+                    <GroupBox Header="Скидка в процентах">
                         <TextBox Name="txtDiscount"/>
                     </GroupBox>
                 </StackPanel>

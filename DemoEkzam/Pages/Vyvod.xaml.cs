@@ -58,10 +58,10 @@ namespace DemoEkzam.Pages
                 switch (cbSort.SelectedIndex)
                 {
                     case 0:
-                        list = list.OrderBy(s => s.Cost).ToList();
+                        list = list.OrderBy(s => s.Costnew).ToList();
                         break;
                     case 1:
-                        list = list.OrderByDescending(s => s.Cost).ToList();
+                        list = list.OrderByDescending(s => s.Costnew).ToList();
                         break;
                     
                 }
