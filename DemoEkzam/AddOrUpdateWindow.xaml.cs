@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -24,15 +26,17 @@ namespace DemoEkzam
     {
         string s;
         Service service;
+        string directory;
+        
         public AddOrUpdateWindow()
         {
             InitializeComponent();
             gbId.Visibility = Visibility.Collapsed;
             s = "Добавление услуги";
             nameWindow.Title = s;
-            tbHeader.Text = "Добавление услуги";
             btnAddUpdate.Content = "Добавить услугу";
             gbId.Visibility = Visibility.Collapsed;
+            DirectoryPhoto();
         }
         public AddOrUpdateWindow(Service service)
         {
@@ -41,7 +45,6 @@ namespace DemoEkzam
             gbId.Visibility = Visibility.Visible;
             s = "Редактирование услуги";
             nameWindow.Title = s;
-            tbHeader.Text = "Редактирование услуги";
             txtId.Text = service.ID.ToString();
             txtName.Text = service.Title;
             txtDescription.Text = service.Description;
@@ -50,8 +53,21 @@ namespace DemoEkzam
             txtDiscount.Text = service.Discount.ToString();
             imageService.Source = new BitmapImage(new Uri(service.MainImagePath, UriKind.Relative));
             btnAddUpdate.Content = "Изменить услугу";
+            List<ServicePhoto> list = DataBase.connection.ServicePhoto.Where(x=> x.ServiceID==service.ID).ToList();
+            lstPhotos.ItemsSource = list;
+            DirectoryPhoto();
         }
-
+        void DirectoryPhoto()
+        {
+            directory = Environment.CurrentDirectory;
+            string[] arrayDirectiry = directory.Split('\\');
+            directory = "";
+            for (int i = 0; i < arrayDirectiry.Length - 2; i++)
+            {
+                directory += arrayDirectiry[i] + "\\";
+            }
+            directory += "Услуги школы";
+        }
         private bool Check()
         {
             if(Regex.IsMatch(txtName.Text, "^[A-Я][а-я ]+$"))
@@ -159,18 +175,23 @@ namespace DemoEkzam
         private void btnPhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
-            string directory = Environment.CurrentDirectory;
-            string[] arrayDirectiry = directory.Split('\\');
-            directory = "";
-            for(int i=0; i< arrayDirectiry.Length-2; i++)
-            {
-                directory += arrayDirectiry[i]+"\\";
-            }
-            directory += "Услуги школы";
-            openFile.InitialDirectory = directory;
+            openFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             if ((bool)openFile.ShowDialog())
             {
-                path = openFile.FileName;
+                path = openFile.FileName;//нашли файл по пути
+                string[] pathName = path.Split('\\');//распарсили по слешу
+                if (!path.Contains(directory))//если в пути нет папки с файлами
+                {
+                    string NameFile = directory + '\\' + pathName[pathName.Length - 1];//путь к папке + название фото
+                    if(File.Exists(NameFile))
+                    {
+                        string[] name = pathName[pathName.Length - 1].Split('.');
+                        name[0] += "(1)";
+                        NameFile = directory + '\\' + name[0] + '.' + name[1];
+                    }
+                    File.Copy(path, NameFile, false);//копируем файл
+                    path = NameFile;//присваиваем путь
+                }
                 string[] arrayPath = path.Split('\\');
                 path = "\\" + arrayPath[arrayPath.Length - 2] + "\\" + arrayPath[arrayPath.Length - 1];
                 imageService.Source = new BitmapImage(new Uri(path, UriKind.RelativeOrAbsolute));
