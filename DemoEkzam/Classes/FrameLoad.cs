@@ -10,5 +10,6 @@ namespace DemoEkzam.Classes
     internal class FrameLoad
     {
         public static Frame frmLoad;
+        public static Frame frmAdmin;
     }
 }

@@ -136,5 +136,11 @@ namespace DemoEkzam.Pages
                 MessageBox.Show("Не выбрано ни одной услуги!", "Запись клиента", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void btnAdminWindow_Click(object sender, RoutedEventArgs e)
+        {
+            AdminWindow admin = new AdminWindow();
+            admin.ShowDialog();
+        }
     }
 }

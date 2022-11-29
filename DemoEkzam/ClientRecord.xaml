@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoEkzam"
         mc:Ignorable="d"
-        Title="Запись клиента на услугу" Height="450" Width="500">
+        Title="Запись клиента на услугу" Height="450" Width="500" Icon="\Images\school_logo.ico">
     <Grid>
         <StackPanel Width="300" VerticalAlignment="Center">
             <TextBlock FontSize="20" Text="Запись клиента на услугу" Margin="0,0,0,10" HorizontalAlignment="Center" FontWeight="Bold"/>
