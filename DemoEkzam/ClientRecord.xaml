@@ -1,0 +1,33 @@
+﻿<Window x:Class="DemoEkzam.ClientRecord"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoEkzam"
+        mc:Ignorable="d"
+        Title="Запись клиента на услугу" Height="450" Width="500">
+    <Grid>
+        <StackPanel Width="300" VerticalAlignment="Center">
+            <TextBlock FontSize="20" Text="Запись клиента на услугу" Margin="0,0,0,10" HorizontalAlignment="Center" FontWeight="Bold"/>
+            <GroupBox Margin="0,0,0,5" Header="Услуга">
+                <TextBox Name="tbService" IsReadOnly="True"/>
+            </GroupBox>
+            <GroupBox Margin="0,0,0,5" Header="Длительность в минутах">
+                <TextBox Name="tbDuration" IsReadOnly="True"/>
+            </GroupBox>
+            <GroupBox Margin="0,0,0,5" Header="Клиент">
+                <ComboBox Name="cbClient" IsReadOnly="True" IsEditable="True"/>
+            </GroupBox>
+            <GroupBox Margin="0,0,0,5" Header="Дата услуги">
+                <DatePicker Name="dtDateService"/>
+            </GroupBox>
+            <GroupBox Margin="0,0,0,5" Header="Время начала оказания услуги">
+                <TextBox Name="tbTime" TextChanged="tbTimeEnd_TextChanged"/>
+            </GroupBox>
+            <GroupBox Margin="0,0,0,15" Header="Время окончания оказания услуги">
+                <TextBox Name="tbTimeEnd" IsReadOnly="True"/>
+            </GroupBox>
+            <Button Name="btnAdd" Width="200" Height="30" Content="Записать клиента на услугу" Click="btnAdd_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

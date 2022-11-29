@@ -60,5 +60,6 @@
             <TextBlock Name="tbCountService" />
         </StackPanel>
         <Button Name="btnAddService" Content="Добавить услугу" Width="150" Grid.Row="2" Height="30" HorizontalAlignment="Right" Click="btnAddService_Click"/>
+        <Button Name="btnServiceClient" Content="Записать клиента на услугу" Width="200" Grid.Row="2" Height="30" HorizontalAlignment="Left" Click="btnServiceClient_Click"/>
     </Grid>
 </Page>

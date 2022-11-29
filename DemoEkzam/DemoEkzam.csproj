@@ -68,11 +68,15 @@
       <DependentUpon>AddOrUpdateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Class1.cs" />
+    <Compile Include="Classes\ClientPartialClass.cs" />
     <Compile Include="Classes\DataBase.cs" />
     <Compile Include="Classes\FrameLoad.cs" />
     <Compile Include="Classes\Globals.cs" />
     <Compile Include="Client.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientRecord.xaml.cs">
+      <DependentUpon>ClientRecord.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClientService.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -113,6 +117,10 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Page Include="AddOrUpdateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientRecord.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

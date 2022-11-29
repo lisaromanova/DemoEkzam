@@ -46,7 +46,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0,10,0,0">
                 <Button Name="btnAddUpdate" Margin="0,0,10,0" Width="200" Height="30" Click="btnAddUpdate_Click"/>
-                <Button Name="btnAddPhotos" Margin="10,0,0,0" Width="210" Height="30" Content="Добавить дополнительные фото"/>
+                <Button Name="btnAddPhotos" Margin="10,0,0,0" Width="210" Height="30" Content="Добавить дополнительные фото" Click="btnAddPhotos_Click"/>
             </StackPanel>
         </StackPanel>
         <ListView Name="lstPhotos" SelectionMode="Multiple" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Grid.Row="0" Grid.Column="1">
@@ -63,6 +63,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Name="btnDelete" Grid.Column="1" Grid.Row="1" Content="Удалить выбранные фото" Height="30" Width="200"/>
+        <Button Name="btnDelete" Grid.Column="1" Grid.Row="1" Content="Удалить выбранные фото" Height="30" Width="200" Click="btnDelete_Click"/>
     </Grid>
 </Window>

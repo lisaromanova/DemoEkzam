@@ -122,5 +122,19 @@ namespace DemoEkzam.Pages
             window.ShowDialog();
             FrameLoad.frmLoad.Navigate(new Vyvod());
         }
+
+        private void btnServiceClient_Click(object sender, RoutedEventArgs e)
+        {
+            if(lstView.SelectedItem !=null)
+            {
+                Service service = (Service)lstView.SelectedItem;
+                ClientRecord client = new ClientRecord(service);
+                client.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Не выбрано ни одной услуги!", "Запись клиента", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

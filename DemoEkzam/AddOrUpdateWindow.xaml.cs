@@ -49,7 +49,7 @@ namespace DemoEkzam
             txtName.Text = service.Title;
             txtDescription.Text = service.Description;
             txtCost.Text = service.Cost.ToString();
-            txtDuration.Text = service.DurationInSeconds.ToString();
+            txtDuration.Text = (service.DurationInSeconds/60).ToString();
             txtDiscount.Text = service.Discount.ToString();
             imageService.Source = new BitmapImage(new Uri(service.MainImagePath, UriKind.Relative));
             btnAddUpdate.Content = "Изменить услугу";
@@ -192,10 +192,22 @@ namespace DemoEkzam
                     File.Copy(path, NameFile, false);//копируем файл
                     path = NameFile;//присваиваем путь
                 }
+                MessageBox.Show(path);
                 string[] arrayPath = path.Split('\\');
                 path = "\\" + arrayPath[arrayPath.Length - 2] + "\\" + arrayPath[arrayPath.Length - 1];
+                MessageBox.Show(path);
                 imageService.Source = new BitmapImage(new Uri(path, UriKind.RelativeOrAbsolute));
             }
+        }
+
+        private void btnAddPhotos_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
