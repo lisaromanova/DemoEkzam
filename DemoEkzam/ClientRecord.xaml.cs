@@ -22,6 +22,7 @@ namespace DemoEkzam
     public partial class ClientRecord : Window
     {
         Service service;
+        
         public ClientRecord(Service service)
         {
             InitializeComponent();

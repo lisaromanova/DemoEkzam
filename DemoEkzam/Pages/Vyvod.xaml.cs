@@ -66,7 +66,7 @@ namespace DemoEkzam.Pages
                     
                 }
             }
-            if (string.IsNullOrWhiteSpace(txtNameService.Text))
+            if (!string.IsNullOrWhiteSpace(txtNameService.Text))
             {
                 list = list.Where(s => s.Title.Contains(txtNameService.Text)).ToList();
             }

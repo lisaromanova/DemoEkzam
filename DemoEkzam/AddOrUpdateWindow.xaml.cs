@@ -26,7 +26,8 @@ namespace DemoEkzam
     {
         string s;
         Service service;
-        
+        string directory;
+
         public AddOrUpdateWindow()
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace DemoEkzam
             nameWindow.Title = s;
             btnAddUpdate.Content = "Добавить услугу";
             gbId.Visibility = Visibility.Collapsed;
+            DirectoryPhoto();
         }
         public AddOrUpdateWindow(Service service)
         {
@@ -53,6 +55,18 @@ namespace DemoEkzam
             btnAddUpdate.Content = "Изменить услугу";
             List<ServicePhoto> list = DataBase.connection.ServicePhoto.Where(x=> x.ServiceID==service.ID).ToList();
             lstPhotos.ItemsSource = list;
+            DirectoryPhoto();
+        }
+        void DirectoryPhoto()
+        {
+            directory = Environment.CurrentDirectory;
+            string[] arrayDirectiry = directory.Split('\\');
+            directory = "";
+            for (int i = 0; i < arrayDirectiry.Length - 2; i++)
+            {
+                directory += arrayDirectiry[i] + "\\";
+            }
+            directory += "Услуги школы";
         }
         private bool Check()
         {
@@ -164,18 +178,13 @@ namespace DemoEkzam
             openFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             if ((bool)openFile.ShowDialog())
             {
-                string directory = Environment.CurrentDirectory;
-                directory += "\\Услуги школы";
                 path = openFile.FileName;//нашли файл по пути
-                string[] pathName = path.Split('\\');//распарсили по слешу
                 if (!path.Contains(directory))//если в пути нет папки с файлами
                 {
-                    string NameFile = directory + '\\' + pathName[pathName.Length - 1];//путь к папке + название фото
+                    string NameFile = directory + '\\' + openFile.SafeFileName;//путь к папке + название фото
                     if (File.Exists(NameFile))
                     {
-                        string[] name = pathName[pathName.Length - 1].Split('.');
-                        name[0] += "(1)";
-                        NameFile = directory + '\\' + name[0] + '.' + name[1];
+                        MessageBox.Show("Файл с таким названием уже существует");
                     }
                     File.Copy(path, NameFile, false);//копируем файл
                     path = NameFile;//присваиваем путь
