@@ -204,6 +204,7 @@ namespace DemoEkzam
                 MessageBox.Show(path);
                 imageService.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
                 service.MainImagePath = pathApp;
+                DataBase.connection.SaveChanges();
                 MessageBox.Show("Фото успешно изменено!", s, MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
