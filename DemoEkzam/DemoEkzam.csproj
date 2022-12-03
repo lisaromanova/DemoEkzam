@@ -201,55 +201,57 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Услуги школы\Английский язык.jpg" />
-    <Resource Include="Услуги школы\for company.jpg">
+    <None Include="Услуги школы\for company.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\online lessons.jpg">
+    </None>
+    <None Include="Услуги школы\online lessons.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Испанский язык.jpg">
+    </None>
+    <None Include="Услуги школы\Английский язык.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Итальянский язык.jpg">
+    </None>
+    <None Include="Услуги школы\Испанский язык.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\киноклуб.jpg">
+    </None>
+    <None Include="Услуги школы\Итальянский язык.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Китайский язык.jpg">
+    </None>
+    <None Include="Услуги школы\киноклуб.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Немецкий язык.png">
+    </None>
+    <None Include="Услуги школы\Китайский язык.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Подготовка к экзамену ACT.png">
+    </None>
+    <None Include="Услуги школы\Немецкий язык.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Подготовка к экзамену GMAT.png">
+    </None>
+    <None Include="Услуги школы\Подготовка к экзамену ACT.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Подготовка к экзамену GRE.jpeg">
+    </None>
+    <None Include="Услуги школы\Подготовка к экзамену GMAT.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Подготовка к экзамену IELTS.jpg">
+    </None>
+    <None Include="Услуги школы\Подготовка к экзамену GRE.jpeg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Подготовка к экзамену SAT.png">
+    </None>
+    <None Include="Услуги школы\Подготовка к экзамену IELTS.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Подготовка к экзамену TOEFL.jpg">
+    </None>
+    <None Include="Услуги школы\Подготовка к экзамену SAT.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Португальский язык.jpg">
+    </None>
+    <None Include="Услуги школы\Подготовка к экзамену TOEFL.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Французский язык.jpg">
+    </None>
+    <None Include="Услуги школы\Португальский язык.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Услуги школы\Японский язык.jpg">
+    </None>
+    <None Include="Услуги школы\Французский язык.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </None>
+    <None Include="Услуги школы\Японский язык.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Resource Include="Images\school_logo.ico" />
     <Resource Include="Images\school_logo.png" />
     <Content Include="Model1.Context.tt">

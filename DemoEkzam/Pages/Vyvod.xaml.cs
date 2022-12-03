@@ -114,6 +114,7 @@ namespace DemoEkzam.Pages
             AddOrUpdateWindow window = new AddOrUpdateWindow(service);
             window.ShowDialog();
             FrameLoad.frmLoad.Navigate(new Vyvod());
+
         }
 
         private void btnAddService_Click(object sender, RoutedEventArgs e)
@@ -141,6 +142,16 @@ namespace DemoEkzam.Pages
         {
             AdminWindow admin = new AdminWindow();
             admin.ShowDialog();
+        }
+
+        private void Image_Loaded(object sender, RoutedEventArgs e)
+        {
+            Image img = (Image)sender;
+            int id = Convert.ToInt32(img.Uid);
+            Service service = DataBase.connection.Service.FirstOrDefault(x => x.ID == id);
+            string directory = Environment.CurrentDirectory;
+            directory += service.MainImagePath;
+            img.Source = new BitmapImage(new Uri(directory, UriKind.Absolute));
         }
     }
 }

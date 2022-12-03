@@ -176,6 +176,8 @@ namespace DemoEkzam
         {
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string directory = Environment.CurrentDirectory;
+            directory += "\\Услуги школы";
             if ((bool)openFile.ShowDialog())
             {
                 path = openFile.FileName;//нашли файл по пути
@@ -184,16 +186,26 @@ namespace DemoEkzam
                     string NameFile = directory + '\\' + openFile.SafeFileName;//путь к папке + название фото
                     if (File.Exists(NameFile))
                     {
-                        MessageBox.Show("Файл с таким названием уже существует");
+                        string[] fileName = openFile.SafeFileName.Split('.');
+                        fileName[fileName.Length - 2] = fileName[fileName.Length - 2] + "(1)";
+                        NameFile = directory + '\\';
+                        foreach(string s in fileName)
+                        {
+                            NameFile += s+'.';
+                        }
+                        NameFile = NameFile.Substring(0, NameFile.Length - 1);
                     }
                     File.Copy(path, NameFile, false);//копируем файл
                     path = NameFile;//присваиваем путь
                 }
                 MessageBox.Show(path);
                 string[] arrayPath = path.Split('\\');
-                path = "\\" + arrayPath[arrayPath.Length - 2] + "\\" + arrayPath[arrayPath.Length - 1];
+                string pathApp = "\\" + arrayPath[arrayPath.Length - 2] + "\\" + arrayPath[arrayPath.Length - 1];
                 MessageBox.Show(path);
-                imageService.Source = new BitmapImage(new Uri(path, UriKind.RelativeOrAbsolute));
+                imageService.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
+                service.MainImagePath = pathApp;
+                MessageBox.Show("Фото успешно изменено!", s, MessageBoxButton.OK, MessageBoxImage.Information);
+
             }
         }
 
