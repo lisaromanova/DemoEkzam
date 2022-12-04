@@ -26,17 +26,17 @@ namespace DemoEkzam
     {
         string s;
         Service service;
-        string directory;
 
         public AddOrUpdateWindow()
         {
             InitializeComponent();
+            service = new Service();
+            DataBase.connection.Service.Add(service);
             gbId.Visibility = Visibility.Collapsed;
             s = "Добавление услуги";
             nameWindow.Title = s;
             btnAddUpdate.Content = "Добавить услугу";
             gbId.Visibility = Visibility.Collapsed;
-            DirectoryPhoto();
         }
         public AddOrUpdateWindow(Service service)
         {
@@ -55,19 +55,8 @@ namespace DemoEkzam
             btnAddUpdate.Content = "Изменить услугу";
             List<ServicePhoto> list = DataBase.connection.ServicePhoto.Where(x=> x.ServiceID==service.ID).ToList();
             lstPhotos.ItemsSource = list;
-            DirectoryPhoto();
         }
-        void DirectoryPhoto()
-        {
-            directory = Environment.CurrentDirectory;
-            string[] arrayDirectiry = directory.Split('\\');
-            directory = "";
-            for (int i = 0; i < arrayDirectiry.Length - 2; i++)
-            {
-                directory += arrayDirectiry[i] + "\\";
-            }
-            directory += "Услуги школы";
-        }
+
         private bool Check()
         {
             if(Regex.IsMatch(txtName.Text, "^[A-Я][а-я ]+$"))
@@ -132,44 +121,64 @@ namespace DemoEkzam
             {
                 if (CheckService())
                 {
-                    if (service == null)
+                    service.Title = txtName.Text;
+                    service.Cost = Convert.ToDecimal(txtCost.Text);
+                    service.DurationInSeconds = Convert.ToInt32(txtDuration.Text) * 60;
+                    service.Description = txtDescription.Text;
+                    if (txtDiscount.Text == "")
                     {
-
-                        service = new Service();
-                        DataBase.connection.Service.Add(service);
-                    }
-                }
-                service.Title = txtName.Text;
-                service.Cost = Convert.ToDecimal(txtCost.Text);
-                service.DurationInSeconds = Convert.ToInt32(txtDuration.Text)*60;
-                service.Description = txtDescription.Text;
-                if (txtDiscount.Text == "")
-                {
-                    service.Discount = 0;
-                }
-                else
-                {
-                    if (Regex.IsMatch(txtDiscount.Text, "^\\d+$"))
-                    {
-                        service.Discount = Convert.ToInt32(txtDiscount.Text)/100;
+                        service.Discount = 0;
                     }
                     else
                     {
-                        MessageBox.Show("Введите скидку корректно!", s, MessageBoxButton.OK, MessageBoxImage.Error);
+                        if (Regex.IsMatch(txtDiscount.Text, "^\\d+$"))
+                        {
+                            service.Discount = Convert.ToInt32(txtDiscount.Text) / 100;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Введите скидку корректно!", s, MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
+                    if (path == "")
+                    {
+                        service.MainImagePath = null;
+                    }
+                    else
+                    {
+                        service.MainImagePath = path;
+                    }
+                    DataBase.connection.SaveChanges();
+                    MessageBox.Show("Услуга успешно добавлена!", s, MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
                 }
-                if (path == "")
-                {
-                    service.MainImagePath = null;
-                }
-                else
-                {
-                    service.MainImagePath = path;
-                }
-                DataBase.connection.SaveChanges();
-                MessageBox.Show("Услуга успешно добавлена!", "Добавление услуги", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
+                
             }
+        }
+
+        string CheckPhoto(string directory, string FileName, string ShortNameFile)
+        {
+            string path = FileName;//нашли файл по пути
+            if (!path.Contains(directory))//если в пути нет папки с файлами
+            {
+                string NameFile = directory + '\\' + ShortNameFile;//путь к папке + название фото
+                if (File.Exists(NameFile))
+                {
+                    string[] fileName = ShortNameFile.Split('.');
+                    fileName[fileName.Length - 2] = fileName[fileName.Length - 2] + "(1)";
+                    NameFile = directory + '\\';
+                    foreach (string s in fileName)
+                    {
+                        NameFile += s + '.';
+                    }
+                    NameFile = NameFile.Substring(0, NameFile.Length - 1);
+                }
+                File.Copy(path, NameFile, false);//копируем файл
+                path = NameFile;//присваиваем путь
+            }
+            string[] arrayPath = path.Split('\\');
+            path = "\\" + arrayPath[arrayPath.Length - 2] + "\\" + arrayPath[arrayPath.Length - 1];
+            return path;
         }
 
         private void btnPhoto_Click(object sender, RoutedEventArgs e)
@@ -180,44 +189,50 @@ namespace DemoEkzam
             directory += "\\Услуги школы";
             if ((bool)openFile.ShowDialog())
             {
-                path = openFile.FileName;//нашли файл по пути
-                if (!path.Contains(directory))//если в пути нет папки с файлами
-                {
-                    string NameFile = directory + '\\' + openFile.SafeFileName;//путь к папке + название фото
-                    if (File.Exists(NameFile))
-                    {
-                        string[] fileName = openFile.SafeFileName.Split('.');
-                        fileName[fileName.Length - 2] = fileName[fileName.Length - 2] + "(1)";
-                        NameFile = directory + '\\';
-                        foreach(string s in fileName)
-                        {
-                            NameFile += s+'.';
-                        }
-                        NameFile = NameFile.Substring(0, NameFile.Length - 1);
-                    }
-                    File.Copy(path, NameFile, false);//копируем файл
-                    path = NameFile;//присваиваем путь
-                }
-                MessageBox.Show(path);
-                string[] arrayPath = path.Split('\\');
-                string pathApp = "\\" + arrayPath[arrayPath.Length - 2] + "\\" + arrayPath[arrayPath.Length - 1];
-                MessageBox.Show(path);
-                imageService.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
-                service.MainImagePath = pathApp;
-                DataBase.connection.SaveChanges();
-                MessageBox.Show("Фото успешно изменено!", s, MessageBoxButton.OK, MessageBoxImage.Information);
-
+                path = CheckPhoto(directory, openFile.FileName, openFile.SafeFileName);
+                imageService.Source = new BitmapImage(new Uri(directory+path, UriKind.Absolute));
             }
         }
 
         private void btnAddPhotos_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog OFD = new OpenFileDialog();
+            OFD.Multiselect = true;
+            OFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            foreach(string s in OFD.FileNames)
+            {
+                string directory = Environment.CurrentDirectory;
+                directory += "\\Услуги школы";
+                string[] array = s.Split('\\');
+                string str = CheckPhoto(directory, s, array[array.Length-1]);
+                ServicePhoto servicePhoto = new ServicePhoto() {
+                    ServiceID = service.ID,
+                    PhotoPath = str
+                };
+                DataBase.connection.ServicePhoto.Add(servicePhoto);
+            }
+            DataBase.connection.SaveChanges();
+            MessageBox.Show("Фото успешно добавлены!", s, MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            foreach(ServicePhoto servicePhoto in lstPhotos.SelectedItems)
+            {
+                string directory = Environment.CurrentDirectory;
+                directory += servicePhoto.PhotoPath;
+                try
+                {
+                    File.Delete(directory);
+                    DataBase.connection.ServicePhoto.Remove(servicePhoto);
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка удаления фото!", s, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            DataBase.connection.SaveChanges();
+            MessageBox.Show("Фото успешно удалены!", s, MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

@@ -49,7 +49,7 @@
                 <Button Name="btnAddPhotos" Margin="10,0,0,0" Width="210" Height="30" Content="Добавить дополнительные фото" Click="btnAddPhotos_Click"/>
             </StackPanel>
         </StackPanel>
-        <ListView Name="lstPhotos" SelectionMode="Multiple" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Grid.Row="0" Grid.Column="1">
+        <ListView Name="lstPhotos" SelectionMode="Multiple" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="0" Grid.Column="1">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel></WrapPanel>
