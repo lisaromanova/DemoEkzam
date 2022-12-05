@@ -30,13 +30,13 @@ namespace DemoEkzam
         public AddOrUpdateWindow()
         {
             InitializeComponent();
-            service = new Service();
-            DataBase.connection.Service.Add(service);
             gbId.Visibility = Visibility.Collapsed;
             s = "Добавление услуги";
             nameWindow.Title = s;
             btnAddUpdate.Content = "Добавить услугу";
             gbId.Visibility = Visibility.Collapsed;
+            service = new Service();
+            DataBase.connection.Service.Add(service);
         }
         public AddOrUpdateWindow(Service service)
         {
@@ -96,7 +96,7 @@ namespace DemoEkzam
         private bool CheckService()
         {
             Service service;
-            if (this.service != null)
+            if (this.service.Title != null)
             {
                 service = DataBase.connection.Service.FirstOrDefault(x => x.Title == txtName.Text && x.ID != this.service.ID);
             }
@@ -104,7 +104,7 @@ namespace DemoEkzam
             {
                 service = DataBase.connection.Service.FirstOrDefault(x => x.Title == txtName.Text);
             }
-            if(service== null)
+            if(service == null)
             {
                 return true;
             }
@@ -149,7 +149,7 @@ namespace DemoEkzam
                         service.MainImagePath = path;
                     }
                     DataBase.connection.SaveChanges();
-                    MessageBox.Show("Услуга успешно добавлена!", s, MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Успешное сохранение данных!", s, MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();
                 }
                 
@@ -199,7 +199,8 @@ namespace DemoEkzam
             OpenFileDialog OFD = new OpenFileDialog();
             OFD.Multiselect = true;
             OFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            foreach(string s in OFD.FileNames)
+            List<ServicePhoto> list = DataBase.connection.ServicePhoto.Where(x => x.ServiceID == service.ID).ToList();
+            foreach (string s in OFD.FileNames)
             {
                 string directory = Environment.CurrentDirectory;
                 directory += "\\Услуги школы";
@@ -210,9 +211,9 @@ namespace DemoEkzam
                     PhotoPath = str
                 };
                 DataBase.connection.ServicePhoto.Add(servicePhoto);
+                list.Add(servicePhoto);
             }
-            DataBase.connection.SaveChanges();
-            MessageBox.Show("Фото успешно добавлены!", s, MessageBoxButton.OK, MessageBoxImage.Information);
+            lstPhotos.ItemsSource = list;
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

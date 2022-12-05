@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media.Imaging;
 using DemoEkzam.Classes;
 
 namespace DemoEkzam
@@ -31,13 +33,13 @@ namespace DemoEkzam
                 return c;
             }
         }
-        public string AdminButtons
+        public Visibility AdminButtons
         {
             get
             {
                 return Globals.AdminButton;
             }
-            
+
         }
         public string PriceVisibility
         {
@@ -71,7 +73,7 @@ namespace DemoEkzam
         {
             get
             {
-                if(Discount == 0)
+                if (Discount == 0)
                 {
                     return "White";
                 }
@@ -79,6 +81,13 @@ namespace DemoEkzam
                 {
                     return "#FFE7FABF";
                 }
+            }
+        }
+        public BitmapImage ImageNew
+        {
+            get
+            {
+                return new BitmapImage(new Uri(Environment.CurrentDirectory + MainImagePath, UriKind.RelativeOrAbsolute));
             }
         }
     }

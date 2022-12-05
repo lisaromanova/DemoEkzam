@@ -34,13 +34,13 @@ namespace DemoEkzam
         {
             if (txtAdmin.Text == "0000")
             {
-                Globals.AdminButton = "Visible";
+                Globals.AdminButton = Visibility.Visible;
                 FrameLoad.frmLoad.Navigate(new Vyvod());
-                MessageBox.Show("Ничего не работает");
+                //MessageBox.Show("Ничего не работает");
             }
             else
             {
-                Globals.AdminButton = "Hidden";
+                Globals.AdminButton = Visibility.Hidden;
                 FrameLoad.frmLoad.Navigate(new Vyvod());
             }
         }

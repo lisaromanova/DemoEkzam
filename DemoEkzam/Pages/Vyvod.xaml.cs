@@ -25,6 +25,9 @@ namespace DemoEkzam.Pages
         {
             InitializeComponent();
             cbFiltr.SelectedIndex = 0;
+            btnAddService.Visibility = Globals.AdminButton;
+            btnServiceClient.Visibility = Globals.AdminButton;
+            btnAdminWindow.Visibility = Globals.AdminButton;
         }
 
         private void cbFiltr_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -144,14 +147,5 @@ namespace DemoEkzam.Pages
             admin.ShowDialog();
         }
 
-        private void Image_Loaded(object sender, RoutedEventArgs e)
-        {
-            Image img = (Image)sender;
-            int id = Convert.ToInt32(img.Uid);
-            Service service = DataBase.connection.Service.FirstOrDefault(x => x.ID == id);
-            string directory = Environment.CurrentDirectory;
-            directory += service.MainImagePath;
-            img.Source = new BitmapImage(new Uri(directory, UriKind.Absolute));
-        }
     }
 }
