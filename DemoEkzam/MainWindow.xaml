@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoEkzam"
         mc:Ignorable="d"
-        Title="Школа языков Леарн" Height="550" MinHeight="550" Width="800" MinWidth="800" Icon="/Images/school_logo.ico">
+        Title="Школа языков Леарн" Height="650" MinHeight="650" Width="900" MinWidth="900" Icon="/Images/school_logo.ico">
       <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="33*"/>
@@ -15,7 +15,8 @@
             <Image Margin="0,0,15,0" Source="/Images/school_logo.png" Width="50"/>
             <TextBlock Name="Header" Text="Школа языков Леарн" Style="{StaticResource txtHeader}"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Right" Grid.Row="0">
+        <StackPanel Margin="0,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0">
+            <TextBlock Text="Режим администратора" Margin="0,0,0,10"/>
             <TextBox Width="100" Name="txtAdmin" SelectionChanged="txtAdmin_SelectionChanged"/>
         </StackPanel>
         <Frame Grid.Row="1" Name="frmMain" NavigationUIVisibility="Hidden" />
