@@ -46,5 +46,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <TextBlock Visibility="Collapsed" Name="tbEmpty" Text="Нет ближайших записей" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
     </Grid>
 </Page>

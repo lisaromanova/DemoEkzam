@@ -11,6 +11,7 @@ namespace DemoEkzam
 {
     public partial class Service
     {
+        public static Visibility adminButton = Visibility.Hidden;
         public string myString
         {
             get
@@ -33,11 +34,15 @@ namespace DemoEkzam
                 return c;
             }
         }
-        public Visibility AdminButtons
+        public static Visibility AdminButtons
         {
             get
             {
-                return Globals.AdminButton;
+                return adminButton;
+            }
+            set
+            {
+                adminButton = value;
             }
 
         }

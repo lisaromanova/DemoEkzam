@@ -26,7 +26,8 @@ namespace DemoEkzam
     {
         string s;
         Service service;
-
+        List<ServicePhoto> list = new List<ServicePhoto>();
+        string path = null;
         public AddOrUpdateWindow()
         {
             InitializeComponent();
@@ -51,9 +52,10 @@ namespace DemoEkzam
             txtCost.Text = service.Cost.ToString();
             txtDuration.Text = (service.DurationInSeconds/60).ToString();
             txtDiscount.Text = service.Discount.ToString();
-            imageService.Source = new BitmapImage(new Uri(service.MainImagePath, UriKind.Relative));
+            path = service.MainImagePath;
+            imageService.Source = new BitmapImage(new Uri(Environment.CurrentDirectory+service.MainImagePath, UriKind.Absolute));
             btnAddUpdate.Content = "Изменить услугу";
-            List<ServicePhoto> list = DataBase.connection.ServicePhoto.Where(x=> x.ServiceID==service.ID).ToList();
+            list = DataBase.connection.ServicePhoto.Where(x=> x.ServiceID==service.ID).ToList();
             lstPhotos.ItemsSource = list;
         }
 
@@ -114,7 +116,7 @@ namespace DemoEkzam
                 return false;
             }
         }
-        string path="";
+        
         private void btnAddUpdate_Click(object sender, RoutedEventArgs e)
         {
             if (Check())
@@ -140,7 +142,7 @@ namespace DemoEkzam
                             MessageBox.Show("Введите скидку корректно!", s, MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
-                    if (path == "")
+                    if (path == null)
                     {
                         service.MainImagePath = null;
                     }
@@ -190,7 +192,7 @@ namespace DemoEkzam
             if ((bool)openFile.ShowDialog())
             {
                 path = CheckPhoto(directory, openFile.FileName, openFile.SafeFileName);
-                imageService.Source = new BitmapImage(new Uri(directory+path, UriKind.Absolute));
+                imageService.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + path, UriKind.Absolute));
             }
         }
 
@@ -199,40 +201,44 @@ namespace DemoEkzam
             OpenFileDialog OFD = new OpenFileDialog();
             OFD.Multiselect = true;
             OFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            List<ServicePhoto> list = DataBase.connection.ServicePhoto.Where(x => x.ServiceID == service.ID).ToList();
-            foreach (string s in OFD.FileNames)
+            if ((bool)OFD.ShowDialog())
             {
-                string directory = Environment.CurrentDirectory;
-                directory += "\\Услуги школы";
-                string[] array = s.Split('\\');
-                string str = CheckPhoto(directory, s, array[array.Length-1]);
-                ServicePhoto servicePhoto = new ServicePhoto() {
-                    ServiceID = service.ID,
-                    PhotoPath = str
-                };
-                DataBase.connection.ServicePhoto.Add(servicePhoto);
-                list.Add(servicePhoto);
+                foreach (string s in OFD.FileNames)
+                {
+                    string directory = Environment.CurrentDirectory;
+                    directory += "\\Услуги школы";
+                    string[] array = s.Split('\\');
+                    string str = CheckPhoto(directory, s, array[array.Length - 1]);
+                    ServicePhoto servicePhoto = new ServicePhoto()
+                    {
+                        ServiceID = service.ID,
+                        PhotoPath = str
+                    };
+                    DataBase.connection.ServicePhoto.Add(servicePhoto);
+                    list.Add(servicePhoto);
+                }
             }
+            lstPhotos.ItemsSource = null;
             lstPhotos.ItemsSource = list;
+            if (service.Title != null)
+            {
+                DataBase.connection.SaveChanges();
+            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            foreach(ServicePhoto servicePhoto in lstPhotos.SelectedItems)
+            foreach (ServicePhoto servicePhoto in lstPhotos.SelectedItems)
             {
-                string directory = Environment.CurrentDirectory;
-                directory += servicePhoto.PhotoPath;
-                try
-                {
-                    File.Delete(directory);
-                    DataBase.connection.ServicePhoto.Remove(servicePhoto);
-                }
-                catch
-                {
-                    MessageBox.Show("Ошибка удаления фото!", s, MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                DataBase.connection.ServicePhoto.Remove(servicePhoto);
+                list.Remove(servicePhoto);
             }
-            DataBase.connection.SaveChanges();
+            lstPhotos.ItemsSource = null;
+            lstPhotos.ItemsSource = list;
+            if (service.Title != null)
+            {
+                DataBase.connection.SaveChanges();
+            }
             MessageBox.Show("Фото успешно удалены!", s, MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

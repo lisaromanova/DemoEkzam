@@ -25,9 +25,20 @@ namespace DemoEkzam.Pages
         public AdminPage()
         {
             InitializeComponent();
+            
             DateTime tomorrow = DateTime.Today.AddDays(2);
-            lstView.ItemsSource = DataBase.connection.ClientService.Where(x => x.StartTime >= DateTime.Now && x.StartTime <= tomorrow).OrderBy(x=>x.StartTime).ToList();
-
+            List<ClientService> list = DataBase.connection.ClientService.Where(x => x.StartTime >= DateTime.Now && x.StartTime <= tomorrow).OrderBy(x=>x.StartTime).ToList();
+            lstView.ItemsSource = list;
+            if (list.Count==0)
+            {
+                tbEmpty.Visibility = Visibility.Visible;
+                lstView.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                tbEmpty.Visibility = Visibility.Collapsed;
+                lstView.Visibility = Visibility.Visible;
+            }
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(RefreshPage);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 30);

@@ -58,7 +58,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <Image Width="50" Height="50" Source="{Binding PhotoPath}"/>
+                        <Image Width="100" Height="100" Source="{Binding NewPhoto}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

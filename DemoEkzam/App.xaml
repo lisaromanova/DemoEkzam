@@ -6,6 +6,7 @@
     <Application.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
         </Style>
         <Style TargetType="TextBlock" x:Key="txtHeader">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -23,5 +24,10 @@
         <Style TargetType="StackPanel">
             <Setter Property="Margin" Value="5"/>
         </Style>
+        <ControlTemplate TargetType="Button" x:Key="btnTemplate">
+            <Border BorderBrush="#FF04A0FF" BorderThickness="2" Background="White" CornerRadius="30">
+                <ContentControl Content="{TemplateBinding Content}" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF04A0FF"/>
+            </Border>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

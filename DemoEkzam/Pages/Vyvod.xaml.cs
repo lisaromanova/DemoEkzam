@@ -25,9 +25,9 @@ namespace DemoEkzam.Pages
         {
             InitializeComponent();
             cbFiltr.SelectedIndex = 0;
-            btnAddService.Visibility = Globals.AdminButton;
-            btnServiceClient.Visibility = Globals.AdminButton;
-            btnAdminWindow.Visibility = Globals.AdminButton;
+            btnAddService.Visibility = Service.AdminButtons;
+            btnServiceClient.Visibility = Service.AdminButtons;
+            btnAdminWindow.Visibility = Service.AdminButtons;
         }
 
         private void cbFiltr_SelectionChanged(object sender, SelectionChangedEventArgs e)
