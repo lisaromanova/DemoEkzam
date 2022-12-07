@@ -8,6 +8,22 @@
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="FontSize" Value="14"/>
         </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="GroupBox">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
         <Style TargetType="TextBlock" x:Key="txtHeader">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -25,8 +41,13 @@
             <Setter Property="Margin" Value="5"/>
         </Style>
         <ControlTemplate TargetType="Button" x:Key="btnTemplate">
-            <Border BorderBrush="#FF04A0FF" BorderThickness="2" Background="White" CornerRadius="30">
-                <ContentControl Content="{TemplateBinding Content}" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF04A0FF"/>
+            <Border BorderBrush="#FF04A0FF" BorderThickness="2" Background="White" CornerRadius="30" Height="40">
+                <ContentControl Content="{TemplateBinding Content}" FontWeight="Bold" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF04A0FF" Cursor="Hand"/>
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="btnUpdateTemplate">
+            <Border BorderBrush="Black" BorderThickness="2" Background="White" CornerRadius="20">
+                <ContentControl Content="{TemplateBinding Content}" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Cursor="Hand"/>
             </Border>
         </ControlTemplate>
     </Application.Resources>

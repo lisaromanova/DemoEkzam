@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoEkzam"
         mc:Ignorable="d"
-        Title="AddOrUpdateWindow" Name="nameWindow" Height="400" Width="900" Icon="\Images\school_logo.ico">
+        Title="AddOrUpdateWindow" Name="nameWindow" Height="470" Width="900" Icon="\Images\school_logo.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -15,40 +15,35 @@
             <ColumnDefinition Width="570"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel HorizontalAlignment="Center" Margin="0,5,0,5" Grid.RowSpan="2">
-            <StackPanel Orientation="Horizontal">
-                <GroupBox Header="Изображение">
-                    <StackPanel>
-                        <Image Width="200" Height="200" Name="imageService"/>
-                        <Button Name="btnPhoto" Width="200" Height="30" Margin="0,10,0,0" Content="Изменить фото" Click="btnPhoto_Click"/>
-                    </StackPanel>
-                </GroupBox>
-                <StackPanel Width="300">
-                    <GroupBox Name="gbId" Header="ID">
-                        <TextBox Name="txtId" IsReadOnly="True"/>
-                    </GroupBox>
-                    <GroupBox Header="Наименование услуги">
-                        <TextBox Name="txtName"/>
-                    </GroupBox>
-                    <GroupBox Header="Стоимость услуги">
-                        <TextBox Name="txtCost"/>
-                    </GroupBox>
-                    <GroupBox Header="Длительность услуги в минутах">
-                        <TextBox Name="txtDuration"/>
-                    </GroupBox>
-                    <GroupBox Header="Описание услуги">
-                        <TextBox Name="txtDescription" TextWrapping="Wrap" AcceptsReturn="True" Height="50"/>
-                    </GroupBox>
-                    <GroupBox Header="Скидка в процентах">
-                        <TextBox Name="txtDiscount"/>
-                    </GroupBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="0">
+            <GroupBox Header="Изображение">
+                <StackPanel VerticalAlignment="Top">
+                    <Image Width="200" Height="200" Name="imageService"/>
+                    <Button Height="40" Name="btnPhoto" Width="200" Margin="0,10,0,0" Content="Изменить фото" Template="{StaticResource btnUpdateTemplate}" Click="btnPhoto_Click"/>
                 </StackPanel>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0,10,0,0">
-                <Button Name="btnAddUpdate" Margin="0,0,10,0" Width="200" Height="30" Click="btnAddUpdate_Click"/>
-                <Button Name="btnAddPhotos" Margin="10,0,0,0" Width="210" Height="30" Content="Добавить дополнительные фото" Click="btnAddPhotos_Click"/>
+            </GroupBox>
+            <StackPanel Width="300" VerticalAlignment="Top">
+                <GroupBox Name="gbId" Header="ID">
+                    <TextBox Name="txtId" IsReadOnly="True"/>
+                </GroupBox>
+                <GroupBox Header="Наименование услуги">
+                    <TextBox Name="txtName"/>
+                </GroupBox>
+                <GroupBox Header="Стоимость услуги">
+                    <TextBox Name="txtCost"/>
+                </GroupBox>
+                <GroupBox Header="Длительность услуги в минутах">
+                    <TextBox Name="txtDuration"/>
+                </GroupBox>
+                <GroupBox Header="Описание услуги">
+                    <TextBox Name="txtDescription" TextWrapping="Wrap" AcceptsReturn="True" Height="50"/>
+                </GroupBox>
+                <GroupBox Header="Скидка в процентах">
+                    <TextBox Name="txtDiscount"/>
+                </GroupBox>
             </StackPanel>
         </StackPanel>
+
         <ListView Name="lstPhotos" SelectionMode="Multiple" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="0" Grid.Column="1">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -63,6 +58,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Name="btnDelete" Grid.Column="1" Grid.Row="1" Content="Удалить выбранные фото" Height="30" Width="200" Click="btnDelete_Click"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top"  Margin="0,10,0,0">
+            <Button Name="btnAddUpdate" Margin="0,0,10,0" Width="200" Content="Сохранить изменения" Template="{StaticResource btnUpdateTemplate}" Click="btnAddUpdate_Click"/>
+            <Button Name="btnAddPhotos"  Margin="10,0,0,0" Width="250" Content="Добавить дополнительные фото" Template="{StaticResource btnUpdateTemplate}" Click="btnAddPhotos_Click"/>
+        </StackPanel>
+        <Button Name="btnDelete" Grid.Column="1" Grid.Row="1" Height="40" Content="Удалить выбранные фото" Template="{StaticResource btnUpdateTemplate}" Width="200" Click="btnDelete_Click"/>
     </Grid>
 </Window>

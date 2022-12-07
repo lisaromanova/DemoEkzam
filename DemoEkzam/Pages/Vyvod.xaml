@@ -25,8 +25,8 @@
                             <TextBlock Text="{Binding Sk}" Visibility="{Binding PriceVisibility}"/>
                             </StackPanel>
                             <StackPanel Height="30" DockPanel.Dock="Bottom" Margin="0,0,0,0" Orientation="Horizontal">
-                                <Button Margin="0,0,5,0" Name="btnUpdate" Visibility="{Binding AdminButtons}" Width="100" Content="редактировать" Click="btnUpdate_Click" Tag="{Binding ID}"/>
-                                <Button Name="btnDelete" Width="100" Visibility="{Binding AdminButtons}" Content="удалить" Click="btnDelete_Click" Tag="{Binding ID}"/>
+                                <Button Margin="0,0,5,0" Name="btnUpdate" Visibility="{Binding AdminButtons}" Width="150" Content="Редактировать" Click="btnUpdate_Click" Template="{StaticResource btnUpdateTemplate}" Tag="{Binding ID}"/>
+                                <Button Name="btnDelete" Width="100" Visibility="{Binding AdminButtons}" Content="Удалить" Click="btnDelete_Click" Template="{StaticResource btnUpdateTemplate}" Tag="{Binding ID}"/>
                             </StackPanel>
                         </DockPanel>
                     </StackPanel>
@@ -45,14 +45,14 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <TextBlock Text="Сортировать по:"  Margin="0,0,10,0"/>
-                        <ComboBox Height="30" FontFamily="Comic Sans MS" FontSize="14" Name="cbSort" HorizontalAlignment="Left" Width="200" SelectionChanged="cbFiltr_SelectionChanged" IsEditable="True" IsReadOnly="True">
+                        <ComboBox Name="cbSort" HorizontalAlignment="Left" Width="200" SelectionChanged="cbFiltr_SelectionChanged" IsEditable="True" IsReadOnly="True">
                             <ComboBoxItem>По возрастанию</ComboBoxItem>
                             <ComboBoxItem>По убыванию</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                         <TextBlock Text="Скидка: "/>
-                        <ComboBox Height="30" FontFamily="Comic Sans MS" FontSize="14" Margin="10,0,0,0" Name="cbFiltr" Width="200" IsEditable="True" IsReadOnly="True" SelectionChanged="cbFiltr_SelectionChanged">
+                        <ComboBox Margin="10,0,0,0" Name="cbFiltr" Width="200" IsEditable="True" IsReadOnly="True" SelectionChanged="cbFiltr_SelectionChanged">
                             <ComboBoxItem>Все</ComboBoxItem>
                             <ComboBoxItem>от 0 до 5%</ComboBoxItem>
                             <ComboBoxItem>от 5% до 15%</ComboBoxItem>
@@ -67,7 +67,7 @@
                     <LineBreak/>
                         и описанию услуги
                     </TextBlock>
-                    <TextBox Margin="10,0,0,0" FontFamily="Comic Sans MS" FontSize="14" Name="txtNameService" Height="30" Width="200" TextChanged="txtNameService_TextChanged"/>
+                    <TextBox Margin="10,0,0,0" Name="txtNameService" Width="200" TextChanged="txtNameService_TextChanged"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
@@ -75,8 +75,8 @@
         <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Name="tbCountService" />
         </StackPanel>
-        <Button Name="btnAddService" Content="Добавить услугу" Width="150" Grid.Row="0" Height="30" HorizontalAlignment="Right" Template="{StaticResource btnTemplate}" Click="btnAddService_Click"/>
-        <Button Name="btnServiceClient" Content="Записать клиента на услугу" Width="200" Grid.Row="2" Height="30" HorizontalAlignment="Left" Template="{StaticResource btnTemplate}" Click="btnServiceClient_Click"/>
-        <Button Name="btnAdminWindow" Content="Окно администратора" Width="170" Grid.Row="2" Height="30" HorizontalAlignment="Right" Template="{StaticResource btnTemplate}" Click="btnAdminWindow_Click"/>
+        <Button Name="btnAddService" Content="Добавить услугу" Width="150" Grid.Row="0" HorizontalAlignment="Right" Template="{StaticResource btnTemplate}" Click="btnAddService_Click"/>
+        <Button Name="btnServiceClient" Content="Записать клиента на услугу" Width="230" Grid.Row="2" HorizontalAlignment="Left" Template="{StaticResource btnTemplate}" Click="btnServiceClient_Click"/>
+        <Button Name="btnAdminWindow" Content="Окно администратора" Width="180" Grid.Row="2" HorizontalAlignment="Right" Template="{StaticResource btnTemplate}" Click="btnAdminWindow_Click"/>
     </Grid>
 </Page>

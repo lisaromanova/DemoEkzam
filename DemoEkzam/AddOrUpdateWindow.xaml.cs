@@ -34,7 +34,6 @@ namespace DemoEkzam
             gbId.Visibility = Visibility.Collapsed;
             s = "Добавление услуги";
             nameWindow.Title = s;
-            btnAddUpdate.Content = "Добавить услугу";
             gbId.Visibility = Visibility.Collapsed;
             service = new Service();
             DataBase.connection.Service.Add(service);
@@ -54,7 +53,6 @@ namespace DemoEkzam
             txtDiscount.Text = service.Discount.ToString();
             path = service.MainImagePath;
             imageService.Source = new BitmapImage(new Uri(Environment.CurrentDirectory+service.MainImagePath, UriKind.Absolute));
-            btnAddUpdate.Content = "Изменить услугу";
             list = DataBase.connection.ServicePhoto.Where(x=> x.ServiceID==service.ID).ToList();
             lstPhotos.ItemsSource = list;
         }
